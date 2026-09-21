@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Amiri, Aref_Ruqaa, Cormorant_Garamond, Tajawal } from "next/font/google";
+import { Amiri, Aref_Ruqaa, Cormorant_Garamond, Great_Vibes, Tajawal } from "next/font/google";
 import { coupleNames, wedding } from "@/lib/wedding";
 import "./globals.css";
 
@@ -27,20 +27,26 @@ const tajawal = Tajawal({
   variable: "--font-tajawal",
 });
 
+const script = Great_Vibes({
+  subsets: ["latin"],
+  weight: "400",
+  variable: "--font-script",
+});
+
 export const metadata: Metadata = {
   title: `${wedding.title} · ${coupleNames}`,
-  description: `${wedding.familiesLine}. ${wedding.wedding.weekday} ${wedding.wedding.dateLabel}، ${wedding.wedding.timeLabel} — ${wedding.wedding.hall}، ${wedding.wedding.room}.`,
+  description: `${wedding.inviteLine}. ${wedding.wedding.weekday} ${wedding.wedding.dateLabel}، ${wedding.wedding.timeLabel} — ${wedding.wedding.hall}.`,
   openGraph: {
     title: `${wedding.title} · ${coupleNames}`,
-    description: `${wedding.wedding.hall} · ${wedding.wedding.dateLabel} · ${wedding.wedding.timeLabel}`,
+    description: `${wedding.wedding.hall} · ${wedding.wedding.dateLabel}`,
     locale: "ar_PS",
     type: "website",
-    images: [{ url: wedding.photos.groom, alt: wedding.groom.full }],
+    images: [{ url: wedding.photos.couple, alt: coupleNames }],
   },
 };
 
 export const viewport: Viewport = {
-  themeColor: "#0b2a4a",
+  themeColor: "#071a30",
   width: "device-width",
   initialScale: 1,
 };
@@ -50,7 +56,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html
       lang="ar"
       dir="rtl"
-      className={`${amiri.variable} ${aref.variable} ${cormorant.variable} ${tajawal.variable}`}
+      className={`${amiri.variable} ${aref.variable} ${cormorant.variable} ${tajawal.variable} ${script.variable}`}
     >
       <body>{children}</body>
     </html>

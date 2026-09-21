@@ -3,7 +3,7 @@
  */
 export const wedding = {
   title: "أفراح آل حبوب",
-  familiesLine: "يتشرّف والد العريس ووالد العروس وعائلتاهما الكريمتان بدعوتكم لحضور حفل زفاف نجليهما",
+  inviteLine: "يدعوانكم لحضور زفاف نجليهما",
   closing: "دامت أفراحكم عامرة بالسرور",
   showBismillah: true,
   verse: "وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً",
@@ -11,6 +11,10 @@ export const wedding = {
     groom: "/photos/groom.png",
     couple: "/photos/couple.png",
     background: "/photos/bg.png",
+  },
+  english: {
+    groom: "Saeed",
+    bride: "Noreen",
   },
   groom: {
     first: "سعيد",
@@ -27,25 +31,20 @@ export const wedding = {
   wedding: {
     weekday: "الأربعاء",
     dateLabel: "٣٠ سبتمبر ٢٠٢٦",
-    timeLabel: "الساعة السادسة مساءً",
+    timeLabel: "السادسة مساءً",
     dateISO: "2026-09-30T18:00:00+03:00",
     endISO: "2026-09-30T23:00:00+03:00",
     hall: "صالة ڤيينا",
     room: "قاعة الرومانسية",
     city: "غزة",
-    mapsUrl: "https://www.google.com/maps/search/?api=1&query=صالة+ڤيينا+غزة",
   },
   youth: {
     name: "حفلة الشباب",
     when: "بعد العشاء",
     place: "تقاطع الصحابة مع اليرموك",
-    detail: "مقابل بركس أخ العريس هاني حبوب أبو شادي",
-    artist: "يحيي الحفل الفنان خالد فرج",
+    detail: "مقابل بركس أخ العريس هاني حبوب",
+    artist: "الفنان خالد فرج",
   },
-  notes: [
-    "إدارة الصالة تمنع اصطحاب الأطفال",
-    "يُرجى عدم استخدام الجوال للتصوير أثناء الحفل",
-  ],
 } as const;
 
 export const coupleNames = `${wedding.groom.first} و${wedding.bride.first}`;

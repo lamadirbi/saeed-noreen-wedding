@@ -3,4 +3,7 @@ export type Wish = {
   name: string;
   message: string;
   createdAt: string;
+  token?: string;
 };
+
+export type PublicWish = Omit<Wish, "token">;
