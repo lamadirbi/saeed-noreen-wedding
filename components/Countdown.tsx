@@ -36,11 +36,11 @@ export function Countdown() {
     return () => window.clearInterval(id);
   }, [target]);
 
-  if (left === undefined) return <div className="count-grid count-pending" aria-hidden="true" />;
+  if (left === undefined) return <div className="count-grid count-pending" dir="ltr" aria-hidden="true" />;
   if (!left) return <p className="blessing">بارك الله لكما وجمع بينكما في خير.</p>;
 
   return (
-    <div className="count-grid" aria-label="العدّ التنازلي">
+    <div className="count-grid" dir="ltr" aria-label="العدّ التنازلي">
       {units.map(([key, label]) => (
         <div className="count-cell" key={key}>
           <strong>{toArabicDigits(left[key])}</strong>

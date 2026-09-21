@@ -119,7 +119,13 @@ export function Invitation({ guest }: { guest: string }) {
                   <em>{wedding.bride.fatherTitle}</em>
                 </div>
               </div>
-              <p className="invite-line">{wedding.inviteLine}</p>
+              <p className="invite-line">
+                {wedding.inviteLine}
+                <strong>
+                  {" "}
+                  {wedding.groom.first} و{wedding.bride.first}
+                </strong>
+              </p>
             </section>
 
             <section className="panel when reveal" id="when">

@@ -3,6 +3,7 @@
 import { FormEvent, useEffect, useState } from "react";
 import { formatWishDate } from "@/lib/format";
 import type { PublicWish } from "@/lib/types";
+import { RingsMark } from "@/components/Marks";
 
 const MAX = 180;
 const TOKEN_KEY = "sn-wish-tokens";
@@ -152,52 +153,59 @@ export function Guestbook() {
         </p>
       </form>
 
-      <div className="wish-scroll" aria-label="التهاني">
-        {wishes.length === 0 ? (
-          <p className="empty">كن أول من يكتب.</p>
-        ) : (
-          wishes.map((wish) => {
-            const mine = Boolean(tokens[wish.id]);
-            return (
-              <article className="wish-card" key={wish.id}>
-                {editing === wish.id ? (
-                  <>
-                    <textarea value={draft} onChange={(e) => setDraft(e.target.value)} rows={3} maxLength={MAX} />
-                    <div className="wish-actions">
-                      <button type="button" onClick={() => onSave(wish.id)}>حفظ</button>
-                      <button type="button" className="ghost" onClick={() => setEditing(null)}>إلغاء</button>
-                    </div>
-                  </>
-                ) : (
-                  <>
-                    <p>{wish.message}</p>
-                    <footer>
-                      <strong>{wish.name}</strong>
-                      <time dateTime={wish.createdAt}>{formatWishDate(wish.createdAt)}</time>
-                    </footer>
-                    {mine ? (
+      <div className="wish-board">
+        <div className="wish-rail" aria-hidden="true">
+          {Array.from({ length: 8 }, (_, i) => (
+            <RingsMark key={i} className="rail-ring" />
+          ))}
+        </div>
+        <div className="wish-scroll" aria-label="التهاني">
+          {wishes.length === 0 ? (
+            <p className="empty">كن أول من يكتب.</p>
+          ) : (
+            wishes.map((wish) => {
+              const mine = Boolean(tokens[wish.id]);
+              return (
+                <article className="wish-card" key={wish.id}>
+                  {editing === wish.id ? (
+                    <>
+                      <textarea value={draft} onChange={(e) => setDraft(e.target.value)} rows={3} maxLength={MAX} />
                       <div className="wish-actions">
-                        <button
-                          type="button"
-                          className="ghost"
-                          onClick={() => {
-                            setEditing(wish.id);
-                            setDraft(wish.message);
-                          }}
-                        >
-                          تعديل
-                        </button>
-                        <button type="button" className="ghost danger" onClick={() => onDelete(wish.id)}>
-                          حذف
-                        </button>
+                        <button type="button" onClick={() => onSave(wish.id)}>حفظ</button>
+                        <button type="button" className="ghost" onClick={() => setEditing(null)}>إلغاء</button>
                       </div>
-                    ) : null}
-                  </>
-                )}
-              </article>
-            );
-          })
-        )}
+                    </>
+                  ) : (
+                    <>
+                      <p>{wish.message}</p>
+                      <footer>
+                        <strong>{wish.name}</strong>
+                        <time dateTime={wish.createdAt}>{formatWishDate(wish.createdAt)}</time>
+                      </footer>
+                      {mine ? (
+                        <div className="wish-actions">
+                          <button
+                            type="button"
+                            className="ghost"
+                            onClick={() => {
+                              setEditing(wish.id);
+                              setDraft(wish.message);
+                            }}
+                          >
+                            تعديل
+                          </button>
+                          <button type="button" className="ghost danger" onClick={() => onDelete(wish.id)}>
+                            حذف
+                          </button>
+                        </div>
+                      ) : null}
+                    </>
+                  )}
+                </article>
+              );
+            })
+          )}
+        </div>
       </div>
     </section>
   );

@@ -293,6 +293,12 @@ h2 {
   margin-top: 16px;
   font-size: 1.2rem;
 }
+.invite-line strong {
+  font-family: var(--font-aref), serif;
+  font-weight: 400;
+  font-size: 1.25em;
+  color: #fff;
+}
 
 .date-big, .time-big {
   margin: 6px 0 0;
@@ -308,6 +314,7 @@ h2 {
   grid-template-columns: repeat(4, 1fr);
   gap: 8px;
   margin-top: 16px;
+  direction: ltr;
 }
 .count-pending { min-height: 70px; }
 .count-cell {
@@ -334,10 +341,15 @@ h2 {
 
 .palace-wrap {
   margin: 10px auto 8px;
-  width: min(300px, 100%);
-  filter: drop-shadow(0 12px 20px rgba(0, 0, 0, 0.25));
+  width: min(260px, 80%);
 }
-.palace { width: 100%; height: auto; border-radius: 18px; }
+.palace {
+  width: 100%;
+  height: auto;
+  color: #eaf4ff;
+  background: transparent;
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.25));
+}
 .spark { animation: twinkle 2.8s ease-in-out infinite; }
 .s2 { animation-delay: .7s; }
 .s3 { animation-delay: 1.4s; }
@@ -381,27 +393,48 @@ h2 {
   color: var(--soft);
 }
 
-.wish-scroll {
+.wish-board {
+  position: relative;
+  display: grid;
+  grid-template-columns: 34px 1fr;
+  gap: 8px;
   margin-top: 14px;
+  align-items: stretch;
+}
+.wish-rail {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+  pointer-events: none;
+}
+.rail-ring {
+  width: 30px;
+  height: 18px;
+  color: #dff0ff;
+  opacity: 0.9;
+  filter: drop-shadow(0 1px 4px rgba(0, 0, 0, 0.35));
+}
+.wish-scroll {
   max-height: 320px;
   overflow-y: auto;
-  padding: 4px 10px 4px 4px;
+  padding: 4px 6px 4px 2px;
   display: grid;
   gap: 10px;
   scrollbar-width: thin;
   scrollbar-color: #d7e8f8 transparent;
 }
-.wish-scroll::-webkit-scrollbar { width: 18px; }
+.wish-scroll::-webkit-scrollbar { width: 10px; }
 .wish-scroll::-webkit-scrollbar-track { background: transparent; }
 .wish-scroll::-webkit-scrollbar-thumb {
-  background:
-    radial-gradient(circle at 50% 22%, transparent 5px, #eaf4ff 5.5px, #eaf4ff 7.5px, transparent 8px),
-    radial-gradient(circle at 50% 78%, transparent 5px, #eaf4ff 5.5px, #eaf4ff 7.5px, transparent 8px),
-    linear-gradient(#cfe0f3, #9eb9d8);
+  background: linear-gradient(#eaf4ff, #9eb9d8);
   border-radius: 999px;
-  border: 4px solid transparent;
+  border: 2px solid transparent;
   background-clip: padding-box;
-  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.35);
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.55),
+    0 0 0 1px rgba(180, 210, 240, 0.35);
 }
 
 .wish-card {
