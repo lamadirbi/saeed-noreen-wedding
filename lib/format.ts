@@ -1,5 +1,8 @@
-export function toArabicDigits(value: number) {
-  return value.toLocaleString("ar-EG");
+export function toArabicDigits(value: number, minDigits = 1) {
+  return value.toLocaleString("ar-EG", {
+    minimumIntegerDigits: minDigits,
+    useGrouping: false,
+  });
 }
 
 export function formatWishDate(iso: string) {

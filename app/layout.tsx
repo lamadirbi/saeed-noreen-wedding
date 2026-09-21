@@ -1,5 +1,11 @@
 import type { Metadata, Viewport } from "next";
-import { Cairo, Cormorant_Garamond, Great_Vibes, Noto_Naskh_Arabic } from "next/font/google";
+import {
+  Aref_Ruqaa,
+  Cairo,
+  Cormorant_Garamond,
+  Great_Vibes,
+  Noto_Naskh_Arabic,
+} from "next/font/google";
 import { coupleNames, wedding } from "@/lib/wedding";
 import "./globals.css";
 
@@ -13,6 +19,12 @@ const display = Noto_Naskh_Arabic({
   subsets: ["arabic"],
   weight: ["400", "500", "600", "700"],
   variable: "--font-display",
+});
+
+const hand = Aref_Ruqaa({
+  subsets: ["arabic", "latin"],
+  weight: ["400", "700"],
+  variable: "--font-hand",
 });
 
 const cormorant = Cormorant_Garamond({
@@ -71,7 +83,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html
       lang="ar"
       dir="rtl"
-      className={`${body.variable} ${display.variable} ${cormorant.variable} ${script.variable}`}
+      className={`${body.variable} ${display.variable} ${hand.variable} ${cormorant.variable} ${script.variable}`}
     >
       <body>{children}</body>
     </html>

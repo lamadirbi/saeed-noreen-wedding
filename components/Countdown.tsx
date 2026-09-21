@@ -43,7 +43,7 @@ export function Countdown() {
     <div className="count-grid" dir="ltr" aria-label="العدّ التنازلي">
       {units.map(([key, label]) => (
         <div className="count-cell" key={key}>
-          <strong>{toArabicDigits(left[key])}</strong>
+          <strong>{toArabicDigits(left[key], 2)}</strong>
           <span>{label}</span>
         </div>
       ))}

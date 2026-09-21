@@ -198,7 +198,6 @@ export function Guestbook() {
               const mine = Boolean(tokens[wish.id]);
               return (
                 <article className="wish-card" key={wish.id}>
-                  <RingsMark className="wish-seal" />
                   {editing === wish.id ? (
                     <>
                       <textarea value={draft} onChange={(e) => setDraft(e.target.value)} rows={3} maxLength={MAX} />
