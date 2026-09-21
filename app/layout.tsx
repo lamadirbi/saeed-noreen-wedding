@@ -1,10 +1,10 @@
 import type { Metadata, Viewport } from "next";
 import {
+  Amiri,
   Aref_Ruqaa,
   Cairo,
   Cormorant_Garamond,
   Great_Vibes,
-  Noto_Naskh_Arabic,
 } from "next/font/google";
 import { coupleNames, wedding } from "@/lib/wedding";
 import "./globals.css";
@@ -15,9 +15,9 @@ const body = Cairo({
   variable: "--font-body",
 });
 
-const display = Noto_Naskh_Arabic({
-  subsets: ["arabic"],
-  weight: ["400", "500", "600", "700"],
+const display = Amiri({
+  subsets: ["arabic", "latin"],
+  weight: ["400", "700"],
   variable: "--font-display",
 });
 
