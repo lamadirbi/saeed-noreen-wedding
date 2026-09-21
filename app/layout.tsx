@@ -1,30 +1,24 @@
 import type { Metadata, Viewport } from "next";
-import { Amiri, Aref_Ruqaa, Cormorant_Garamond, Great_Vibes, Tajawal } from "next/font/google";
+import { Cairo, Cormorant_Garamond, Great_Vibes, Noto_Naskh_Arabic } from "next/font/google";
 import { coupleNames, wedding } from "@/lib/wedding";
 import "./globals.css";
 
-const amiri = Amiri({
+const body = Cairo({
   subsets: ["arabic", "latin"],
-  weight: ["400", "700"],
-  variable: "--font-amiri",
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-body",
 });
 
-const aref = Aref_Ruqaa({
-  subsets: ["arabic", "latin"],
-  weight: ["400", "700"],
-  variable: "--font-aref",
+const display = Noto_Naskh_Arabic({
+  subsets: ["arabic"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-display",
 });
 
 const cormorant = Cormorant_Garamond({
   subsets: ["latin"],
-  weight: ["500", "600"],
+  weight: ["500", "600", "700"],
   variable: "--font-cormorant",
-});
-
-const tajawal = Tajawal({
-  subsets: ["arabic", "latin"],
-  weight: ["400", "500", "700"],
-  variable: "--font-tajawal",
 });
 
 const script = Great_Vibes({
@@ -33,15 +27,36 @@ const script = Great_Vibes({
   variable: "--font-script",
 });
 
+const shareText =
+  `بكل الحب والفرح… ${wedding.title} يشرّفون بدعوتكم لحضور زفاف ${coupleNames}. ` +
+  `${wedding.wedding.weekday} ${wedding.wedding.dateLabel} · ${wedding.wedding.timeLabel} — ` +
+  `${wedding.wedding.hall}، ${wedding.wedding.room}. حضوركم يُكمل الفرحة ويزيد البهجة.`;
+
+const ogImage = {
+  url: wedding.photos.background,
+  width: 1200,
+  height: 630,
+  alt: `أيادي العروسين ${coupleNames}`,
+};
+
 export const metadata: Metadata = {
-  title: `${wedding.title} · ${coupleNames}`,
-  description: `${wedding.inviteLine}. ${wedding.wedding.weekday} ${wedding.wedding.dateLabel}، ${wedding.wedding.timeLabel} — ${wedding.wedding.hall}.`,
+  metadataBase: new URL("https://saednoreen.duckdns.org"),
+  title: `دعوة زفاف ${coupleNames} | ${wedding.title}`,
+  description: shareText,
   openGraph: {
-    title: `${wedding.title} · ${coupleNames}`,
-    description: `${wedding.wedding.hall} · ${wedding.wedding.dateLabel}`,
+    title: `💍 دعوة زفاف ${coupleNames}`,
+    description: shareText,
     locale: "ar_PS",
     type: "website",
-    images: [{ url: wedding.photos.couple, alt: coupleNames }],
+    url: "/",
+    siteName: wedding.title,
+    images: [ogImage],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `دعوة زفاف ${coupleNames}`,
+    description: shareText,
+    images: [wedding.photos.background],
   },
 };
 
@@ -56,7 +71,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html
       lang="ar"
       dir="rtl"
-      className={`${amiri.variable} ${aref.variable} ${cormorant.variable} ${tajawal.variable} ${script.variable}`}
+      className={`${body.variable} ${display.variable} ${cormorant.variable} ${script.variable}`}
     >
       <body>{children}</body>
     </html>

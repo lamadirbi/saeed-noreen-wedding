@@ -1,6 +1,6 @@
 "use client";
 
-import { FormEvent, useEffect, useState } from "react";
+import { FormEvent, useEffect, useRef, useState } from "react";
 import { formatWishDate } from "@/lib/format";
 import type { PublicWish } from "@/lib/types";
 import { RingsMark } from "@/components/Marks";
@@ -38,6 +38,22 @@ export function Guestbook() {
   const [error, setError] = useState("");
   const [editing, setEditing] = useState<string | null>(null);
   const [draft, setDraft] = useState("");
+  const [thumb, setThumb] = useState(0);
+  const [showThumb, setShowThumb] = useState(false);
+  const scrollRef = useRef<HTMLDivElement>(null);
+
+  function syncThumb() {
+    const el = scrollRef.current;
+    if (!el) return;
+    const max = el.scrollHeight - el.clientHeight;
+    setShowThumb(max > 8);
+    if (max <= 0) {
+      setThumb(0);
+      return;
+    }
+    const track = el.clientHeight - 36;
+    setThumb((el.scrollTop / max) * Math.max(track, 0));
+  }
 
   useEffect(() => {
     setTokens(loadTokens());
@@ -58,6 +74,19 @@ export function Guestbook() {
       window.clearInterval(id);
     };
   }, []);
+
+  useEffect(() => {
+    syncThumb();
+    const el = scrollRef.current;
+    if (!el) return;
+    const onScroll = () => syncThumb();
+    el.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", syncThumb);
+    return () => {
+      el.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", syncThumb);
+    };
+  }, [wishes]);
 
   async function onSubmit(event: FormEvent) {
     event.preventDefault();
@@ -117,25 +146,32 @@ export function Guestbook() {
   return (
     <section className="panel wishes reveal" id="wishes">
       <p className="eyebrow">التهاني</p>
-      <h2>كلمة للعروسين</h2>
+      <h2 className="wish-title">كلمة للعروسين</h2>
+      <p className="wish-lead">اتركوا أثر محبة يبقى في دفتريهما</p>
 
       <form className="wish-form" onSubmit={onSubmit}>
-        <input
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          placeholder="اسمك"
-          maxLength={40}
-          required
-          autoComplete="name"
-        />
-        <textarea
-          value={message}
-          onChange={(e) => setMessage(e.target.value)}
-          placeholder="تهنئتك"
-          maxLength={MAX}
-          rows={3}
-          required
-        />
+        <label className="field">
+          <span>اسمك</span>
+          <input
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            placeholder="اكتب اسمك الكريم"
+            maxLength={40}
+            required
+            autoComplete="name"
+          />
+        </label>
+        <label className="field">
+          <span>تهنئتك</span>
+          <textarea
+            value={message}
+            onChange={(e) => setMessage(e.target.value)}
+            placeholder="بارك الله لكما…"
+            maxLength={MAX}
+            rows={3}
+            required
+          />
+        </label>
         <input
           className="hp"
           tabIndex={-1}
@@ -145,21 +181,16 @@ export function Guestbook() {
           aria-hidden="true"
         />
         <button type="submit" disabled={status === "sending"}>
-          {status === "sending" ? "…" : "أرسل"}
+          {status === "sending" ? "تُرسل…" : "أرسل التهنئة"}
         </button>
         <p className={`form-status ${status}`} role="status">
-          {status === "sent" && "وصلت."}
+          {status === "sent" && "وصلت. شكرًا لكم."}
           {status === "error" && error}
         </p>
       </form>
 
       <div className="wish-board">
-        <div className="wish-rail" aria-hidden="true">
-          {Array.from({ length: 8 }, (_, i) => (
-            <RingsMark key={i} className="rail-ring" />
-          ))}
-        </div>
-        <div className="wish-scroll" aria-label="التهاني">
+        <div className="wish-scroll" ref={scrollRef} aria-label="التهاني">
           {wishes.length === 0 ? (
             <p className="empty">كن أول من يكتب.</p>
           ) : (
@@ -167,6 +198,7 @@ export function Guestbook() {
               const mine = Boolean(tokens[wish.id]);
               return (
                 <article className="wish-card" key={wish.id}>
+                  <RingsMark className="wish-seal" />
                   {editing === wish.id ? (
                     <>
                       <textarea value={draft} onChange={(e) => setDraft(e.target.value)} rows={3} maxLength={MAX} />
@@ -206,6 +238,13 @@ export function Guestbook() {
             })
           )}
         </div>
+        {showThumb ? (
+          <div className="ring-track" aria-hidden="true">
+            <div className="ring-thumb" style={{ transform: `translateY(${thumb}px)` }}>
+              <RingsMark className="thumb-ring" />
+            </div>
+          </div>
+        ) : null}
       </div>
     </section>
   );

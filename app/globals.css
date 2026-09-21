@@ -12,7 +12,7 @@ html { scroll-behavior: smooth; }
 body {
   margin: 0;
   color: var(--ice);
-  font-family: var(--font-amiri), "Noto Naskh Arabic", serif;
+  font-family: var(--font-body), "Cairo", sans-serif;
   background: #04101d;
   text-rendering: optimizeLegibility;
 }
@@ -105,7 +105,7 @@ img { max-width: 100%; display: block; }
 
 .eyebrow {
   margin: 0;
-  font-family: var(--font-tajawal), sans-serif;
+  font-family: var(--font-body), sans-serif;
   font-size: 0.9rem;
   letter-spacing: 0.12em;
   color: var(--ice);
@@ -163,7 +163,7 @@ img { max-width: 100%; display: block; }
   height: 24px;
 }
 
-.guest { margin: 0; font-family: var(--font-tajawal), sans-serif; }
+.guest { margin: 0; font-family: var(--font-body), sans-serif; }
 
 .enter, .wish-form button, .wish-actions button {
   border: 1px solid rgba(255, 255, 255, 0.55);
@@ -172,7 +172,7 @@ img { max-width: 100%; display: block; }
   border-radius: 999px;
   padding: 12px 26px;
   min-height: 48px;
-  font-family: var(--font-tajawal), sans-serif;
+  font-family: var(--font-body), sans-serif;
   font-weight: 700;
   backdrop-filter: blur(6px);
 }
@@ -190,7 +190,7 @@ img { max-width: 100%; display: block; }
   border: 1px solid rgba(255, 255, 255, 0.5);
   background: rgba(7, 26, 48, 0.55);
   color: #fff;
-  font-family: var(--font-tajawal), sans-serif;
+  font-family: var(--font-body), sans-serif;
   font-size: 0.78rem;
   backdrop-filter: blur(8px);
   box-shadow: 0 10px 24px rgba(0, 0, 0, 0.25);
@@ -247,21 +247,23 @@ img { max-width: 100%; display: block; }
   justify-content: center;
   gap: 10px;
   margin: 8px 0 0;
-  font-family: var(--font-aref), serif;
+  font-family: var(--font-display), "Noto Naskh Arabic", serif;
   font-size: clamp(2.5rem, 11vw, 3.5rem);
-  font-weight: 400;
+  font-weight: 700;
   color: #fff;
   line-height: 1.05;
-  text-shadow: 0 3px 16px rgba(0, 0, 0, 0.45);
+  letter-spacing: 0.01em;
+  text-shadow: 0 3px 18px rgba(0, 0, 0, 0.55);
 }
 
 h2 {
   margin: 6px 0 0;
-  font-family: var(--font-aref), serif;
-  font-size: clamp(1.8rem, 7vw, 2.35rem);
-  font-weight: 400;
+  font-family: var(--font-display), "Noto Naskh Arabic", serif;
+  font-size: clamp(1.85rem, 7vw, 2.4rem);
+  font-weight: 700;
   color: #fff;
-  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
+  letter-spacing: 0.01em;
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.5);
 }
 
 .parents {
@@ -272,7 +274,7 @@ h2 {
 
 .parents span, .parents em {
   display: block;
-  font-family: var(--font-tajawal), sans-serif;
+  font-family: var(--font-body), sans-serif;
   color: var(--soft);
 }
 
@@ -280,12 +282,12 @@ h2 {
 .parents strong {
   display: block;
   margin: 6px 0 2px;
-  font-family: var(--font-aref), serif;
-  font-size: clamp(1.35rem, 5vw, 1.7rem);
-  font-weight: 400;
+  font-family: var(--font-display), "Noto Naskh Arabic", serif;
+  font-size: clamp(1.4rem, 5vw, 1.75rem);
+  font-weight: 700;
   color: #fff;
   line-height: 1.45;
-  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.5);
 }
 .parents em { font-style: normal; font-size: 0.95rem; }
 
@@ -294,48 +296,53 @@ h2 {
   font-size: 1.2rem;
 }
 .invite-line strong {
-  font-family: var(--font-aref), serif;
-  font-weight: 400;
+  font-family: var(--font-display), "Noto Naskh Arabic", serif;
+  font-weight: 700;
   font-size: 1.25em;
   color: #fff;
 }
 
 .date-big, .time-big {
   margin: 6px 0 0;
-  font-family: var(--font-aref), serif;
+  font-family: var(--font-display), "Noto Naskh Arabic", serif;
+  font-weight: 700;
   color: #fff;
-  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.5);
 }
-.date-big { font-size: clamp(1.6rem, 6vw, 2rem); }
-.time-big { font-size: 1.35rem; opacity: 0.95; }
+.date-big { font-size: clamp(1.65rem, 6vw, 2.05rem); }
+.time-big { font-size: 1.4rem; opacity: 0.96; }
 
 .count-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 8px;
+  gap: 10px;
   margin-top: 16px;
   direction: ltr;
 }
-.count-pending { min-height: 70px; }
+.count-pending { min-height: 84px; }
 .count-cell {
-  border: 1px solid var(--line);
-  border-radius: 16px;
-  padding: 12px 4px;
-  background: rgba(7, 26, 48, 0.28);
-  backdrop-filter: blur(4px);
+  border: 1px solid rgba(255, 255, 255, 0.38);
+  border-radius: 18px;
+  padding: 14px 6px 12px;
+  background: linear-gradient(180deg, rgba(255,255,255,.14), rgba(7,26,48,.22));
+  backdrop-filter: blur(8px);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.22);
 }
 .count-cell strong {
   display: block;
   font-family: var(--font-cormorant), serif;
-  font-size: 1.7rem;
-  font-weight: 600;
+  font-size: 1.85rem;
+  font-weight: 700;
   color: #fff;
   line-height: 1;
 }
 .count-cell span {
-  font-family: var(--font-tajawal), sans-serif;
-  font-size: 0.72rem;
-  color: var(--soft);
+  display: inline-block;
+  margin-top: 6px;
+  font-family: var(--font-body), sans-serif;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.86);
 }
 .blessing { margin: 14px 0; color: #fff; }
 
@@ -357,114 +364,158 @@ h2 {
 
 .artist {
   margin: 12px 0 0;
-  font-family: var(--font-tajawal), sans-serif;
+  font-family: var(--font-body), sans-serif;
   font-size: 1.05rem;
   color: #fff;
 }
 
+.wish-title {
+  margin-top: 4px;
+  letter-spacing: 0;
+}
+.wish-lead {
+  margin: 6px 0 0;
+  font-family: var(--font-body), sans-serif;
+  font-size: 0.95rem;
+  color: rgba(255,255,255,.84);
+  text-shadow: 0 2px 8px rgba(0,0,0,.35);
+}
 .wish-form {
   display: grid;
-  gap: 8px;
-  margin-top: 14px;
+  gap: 12px;
+  margin-top: 16px;
   text-align: right;
+}
+.field {
+  display: grid;
+  gap: 6px;
+}
+.field span {
+  font-family: var(--font-body), sans-serif;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: rgba(255,255,255,.9);
 }
 .wish-form input,
 .wish-form textarea,
 .wish-card textarea {
   width: 100%;
-  border: 1px solid var(--line);
-  border-radius: 14px;
-  background: rgba(7, 26, 48, 0.35);
+  border: 1px solid rgba(255,255,255,.42);
+  border-radius: 16px;
+  background: linear-gradient(180deg, rgba(255,255,255,.12), rgba(7,26,48,.28));
   color: #fff;
-  padding: 12px 14px;
+  padding: 14px 16px;
   outline: none;
   resize: vertical;
-  backdrop-filter: blur(5px);
+  backdrop-filter: blur(8px);
+  font-family: var(--font-body), sans-serif;
+  font-size: 1rem;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.18);
+}
+.wish-form input:focus,
+.wish-form textarea:focus {
+  border-color: rgba(255,255,255,.7);
+  box-shadow: 0 0 0 3px rgba(255,255,255,.12);
 }
 .wish-form input::placeholder,
-.wish-form textarea::placeholder { color: rgba(255, 255, 255, 0.55); }
-.wish-form button { justify-self: center; min-width: 140px; }
+.wish-form textarea::placeholder { color: rgba(255, 255, 255, 0.5); }
+.wish-form button {
+  justify-self: center;
+  min-width: 168px;
+  font-weight: 700;
+}
 .form-status {
   min-height: 1.1em;
   margin: 0;
   text-align: center;
-  font-family: var(--font-tajawal), sans-serif;
+  font-family: var(--font-body), sans-serif;
   font-size: 0.82rem;
   color: var(--soft);
 }
 
 .wish-board {
   position: relative;
-  display: grid;
-  grid-template-columns: 34px 1fr;
-  gap: 8px;
-  margin-top: 14px;
-  align-items: stretch;
-}
-.wish-rail {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  padding: 8px 0;
-  pointer-events: none;
-}
-.rail-ring {
-  width: 30px;
-  height: 18px;
-  color: #dff0ff;
-  opacity: 0.9;
-  filter: drop-shadow(0 1px 4px rgba(0, 0, 0, 0.35));
+  margin-top: 16px;
 }
 .wish-scroll {
   max-height: 320px;
   overflow-y: auto;
-  padding: 4px 6px 4px 2px;
+  padding-block: 2px;
+  padding-inline: 36px 2px;
   display: grid;
-  gap: 10px;
-  scrollbar-width: thin;
-  scrollbar-color: #d7e8f8 transparent;
+  gap: 12px;
+  scrollbar-width: none;
 }
-.wish-scroll::-webkit-scrollbar { width: 10px; }
-.wish-scroll::-webkit-scrollbar-track { background: transparent; }
-.wish-scroll::-webkit-scrollbar-thumb {
-  background: linear-gradient(#eaf4ff, #9eb9d8);
-  border-radius: 999px;
-  border: 2px solid transparent;
-  background-clip: padding-box;
-  box-shadow:
-    inset 0 0 0 1px rgba(255, 255, 255, 0.55),
-    0 0 0 1px rgba(180, 210, 240, 0.35);
+.wish-scroll::-webkit-scrollbar { width: 0; height: 0; }
+.ring-track {
+  position: absolute;
+  inset-inline-start: 0;
+  top: 4px;
+  bottom: 4px;
+  width: 28px;
+  pointer-events: none;
+}
+.ring-thumb {
+  position: absolute;
+  top: 0;
+  inset-inline-start: 50%;
+  width: 36px;
+  margin-inline-start: -18px;
+  transition: transform 0.05s linear;
+  will-change: transform;
+}
+.thumb-ring {
+  width: 36px;
+  height: 22px;
+  color: #eef6ff;
+  filter: drop-shadow(0 2px 6px rgba(0,0,0,.45));
 }
 
 .wish-card {
-  border: 1px solid var(--line);
-  border-radius: 16px;
-  padding: 14px;
-  background: rgba(7, 26, 48, 0.32);
-  backdrop-filter: blur(5px);
+  position: relative;
+  border: 1px solid rgba(255,255,255,.34);
+  border-radius: 18px;
+  padding: 18px 16px 14px;
+  background:
+    linear-gradient(145deg, rgba(255,255,255,.14), rgba(7,26,48,.28));
+  backdrop-filter: blur(8px);
   text-align: right;
+  box-shadow: 0 10px 24px rgba(0,0,0,.16);
+}
+.wish-seal {
+  position: absolute;
+  top: 10px;
+  inset-inline-start: 12px;
+  width: 34px;
+  height: 20px;
+  color: rgba(223, 240, 255, 0.75);
 }
 .wish-card p {
   margin: 0;
+  padding-inline-end: 28px;
   color: #fff;
-  line-height: 1.75;
-  font-size: 1.08rem;
+  line-height: 1.8;
+  font-family: var(--font-body), sans-serif;
+  font-size: 1.05rem;
+  font-weight: 500;
 }
 .wish-card footer {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   gap: 10px;
-  margin-top: 8px;
-  font-family: var(--font-tajawal), sans-serif;
-  font-size: 0.78rem;
-  color: var(--soft);
+  margin-top: 12px;
+  padding-top: 10px;
+  border-top: 1px solid rgba(255,255,255,.16);
+  font-family: var(--font-body), sans-serif;
+  font-size: 0.8rem;
+  color: rgba(255,255,255,.78);
 }
 .wish-card strong {
-  font-family: var(--font-aref), serif;
-  font-weight: 400;
+  font-family: var(--font-display), "Noto Naskh Arabic", serif;
+  font-weight: 700;
   color: #fff;
-  font-size: 1.05rem;
+  font-size: 1.08rem;
 }
 .wish-actions {
   display: flex;
@@ -481,9 +532,17 @@ h2 {
 
 .closing {
   text-align: center;
-  font-family: var(--font-aref), serif;
-  font-size: 1.35rem;
+  font-family: var(--font-display), "Noto Naskh Arabic", serif;
+  font-size: 1.4rem;
+  font-weight: 700;
   padding-bottom: 8px;
+  text-shadow: 0 2px 12px rgba(0,0,0,.45);
+}
+.empty {
+  margin: 18px 0;
+  text-align: center;
+  font-family: var(--font-body), sans-serif;
+  color: rgba(255,255,255,.7);
 }
 
 .rise { animation: rise 0.9s ease both; }
