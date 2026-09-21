@@ -119,12 +119,9 @@ export function Invitation({ guest }: { guest: string }) {
                   <em>{wedding.bride.fatherTitle}</em>
                 </div>
               </div>
-              <p className="invite-line">
-                {wedding.inviteLine}
-                <strong>
-                  {" "}
-                  {wedding.groom.first} و{wedding.bride.first}
-                </strong>
+              <p className="invite-line">{wedding.inviteLine}</p>
+              <p className="invite-names">
+                {wedding.groom.first} و{wedding.bride.first}
               </p>
             </section>
 

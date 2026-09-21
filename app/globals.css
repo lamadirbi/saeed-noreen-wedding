@@ -294,13 +294,19 @@ h2 {
 
 .invite-line {
   margin-top: 16px;
-  font-size: 1.2rem;
+  font-size: 1.15rem;
+  text-align: center;
 }
-.invite-line strong {
-  font-family: var(--font-display), "Amiri", serif;
+.invite-names {
+  margin: 8px 0 0;
+  text-align: center;
+  font-family: var(--font-hand), "Aref Ruqaa", serif;
   font-weight: 700;
-  font-size: 1.25em;
+  font-size: clamp(1.85rem, 7vw, 2.45rem);
+  line-height: 1.35;
+  letter-spacing: 0.02em;
   color: #fff;
+  text-shadow: 0 3px 14px rgba(0, 0, 0, 0.45);
 }
 
 .date-big, .time-big {
