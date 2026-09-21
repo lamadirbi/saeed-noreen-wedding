@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { toArabicDigits } from "@/lib/format";
 import { wedding } from "@/lib/wedding";
 
 type Left = { days: number; hours: number; minutes: number; seconds: number };
@@ -19,10 +18,10 @@ function remaining(target: number): Left | null {
 }
 
 const units = [
-  ["days", "يوم"],
-  ["hours", "ساعة"],
-  ["minutes", "دقيقة"],
-  ["seconds", "ثانية"],
+  ["days", "Days"],
+  ["hours", "Hours"],
+  ["minutes", "Mins"],
+  ["seconds", "Secs"],
 ] as const;
 
 export function Countdown() {
@@ -40,10 +39,10 @@ export function Countdown() {
   if (!left) return <p className="blessing">بارك الله لكما وجمع بينكما في خير.</p>;
 
   return (
-    <div className="count-grid" dir="ltr" aria-label="العدّ التنازلي">
+    <div className="count-grid" dir="ltr" aria-label="Countdown">
       {units.map(([key, label]) => (
         <div className="count-cell" key={key}>
-          <strong>{toArabicDigits(left[key], 2)}</strong>
+          <strong>{String(left[key]).padStart(2, "0")}</strong>
           <span>{label}</span>
         </div>
       ))}
