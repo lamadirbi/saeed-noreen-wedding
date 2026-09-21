@@ -4,3 +4,5 @@ out
 .vercel
 *.log
 .env*
+data/wishes.json
+
