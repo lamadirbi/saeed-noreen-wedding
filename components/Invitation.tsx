@@ -59,34 +59,36 @@ export function Invitation({ guest }: { guest: string }) {
         ))}
       </div>
 
-      {phase !== "open" ? (
-        <section className="gate" data-opening={phase === "opening" ? "true" : "false"}>
-          <p className="eyebrow soft">{wedding.title}</p>
-          <div className="gate-frame rise">
-            <img src={wedding.photos.groom} alt={wedding.groom.full} />
-          </div>
-          <p className="english-names rise delay">
-            <span>{wedding.english.groom}</span>
-            <RingsMark />
-            <span>{wedding.english.bride}</span>
-          </p>
-          {guest ? <p className="guest soft">إلى {guest}</p> : null}
-          <button type="button" className="enter rise delay2" onClick={enter}>
-            افتح الدعوة
-          </button>
-        </section>
-      ) : (
-        <>
-          <button
-            type="button"
-            className={playing ? "music-btn on" : "music-btn"}
-            onClick={toggleMusic}
-            aria-pressed={playing}
-            aria-label={playing ? "إيقاف الموسيقى" : "تشغيل الموسيقى"}
-          >
-            {playing ? "إيقاف" : "تشغيل"}
-          </button>
+      {phase === "open" ? (
+        <button
+          type="button"
+          className={playing ? "music-btn on" : "music-btn"}
+          onClick={toggleMusic}
+          aria-pressed={playing}
+          aria-label={playing ? "إيقاف الموسيقى" : "تشغيل الموسيقى"}
+        >
+          {playing ? "إيقاف" : "تشغيل"}
+        </button>
+      ) : null}
 
+      <div className="scroll">
+        {phase !== "open" ? (
+          <section className="gate" data-opening={phase === "opening" ? "true" : "false"}>
+            <p className="eyebrow soft">{wedding.title}</p>
+            <div className="gate-frame rise">
+              <img src={wedding.photos.groom} alt={wedding.groom.full} />
+            </div>
+            <p className="english-names rise delay">
+              <span>{wedding.english.groom}</span>
+              <RingsMark />
+              <span>{wedding.english.bride}</span>
+            </p>
+            {guest ? <p className="guest soft">إلى {guest}</p> : null}
+            <button type="button" className="enter rise delay2" onClick={enter}>
+              افتح الدعوة
+            </button>
+          </section>
+        ) : (
           <div className="flow">
             <section className="panel hero reveal">
               <div className="couple-frame">
@@ -154,8 +156,8 @@ export function Invitation({ guest }: { guest: string }) {
 
             <p className="closing reveal">{wedding.closing}</p>
           </div>
-        </>
-      )}
+        )}
+      </div>
     </main>
   );
 }
