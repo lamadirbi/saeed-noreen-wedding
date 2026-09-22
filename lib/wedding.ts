@@ -19,7 +19,7 @@ export const wedding = {
   groom: {
     first: "سعيد",
     full: "سعيد رفيق حبوب",
-    father: "الحاج رفيق سعيد حبوب",
+    father: "السيد رفيق سعيد حبوب",
     fatherTitle: "أبو رامي",
   },
   bride: {
